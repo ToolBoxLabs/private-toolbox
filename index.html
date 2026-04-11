@@ -124,12 +124,12 @@
         </div>
 
         <div class="content">
-            <p class="date"><strong>Last Updated:</strong> January, 2026</p>
+            <p class="date"><strong>Last Updated:</strong> April 11, 2026</p>
 
             <div class="section">
                 <h2>1. Introduction</h2>
                 <p>Private Toolbox ("we", "our", or "the app") is committed to protecting your privacy. This Privacy Policy explains how our application handles information when you use our services.</p>
-                <p><strong>Private Toolbox is a completely offline productivity application.</strong> All operations are performed entirely on your device without any data transmission.</p>
+                <p><strong>Private Toolbox is an offline-first productivity application.</strong> Every tool in the app — including the on-device AI chat — processes your data entirely on your own device. The only time the app touches the network is when you explicitly choose to download an AI model file or when you tap an external link.</p>
             </div>
 
             <div class="section">
@@ -140,17 +140,47 @@
                 <ul>
                     <li>Documents (PDFs, images) you scan, convert, merge, or modify</li>
                     <li>QR codes and barcodes you scan or generate</li>
-                    <li>Images you compress or resize</li>
+                    <li>Images you compress, resize, or convert between formats (PNG, JPG, WebP, etc.)</li>
                     <li>Text you count, transform, hash, or encode</li>
                     <li>Notes you create in the notepad</li>
-                    <li>All calculator and converter operations</li>
+                    <li>All calculator, graphing calculator, unit converter, and number base operations</li>
                     <li>Timer and stopwatch data</li>
+                    <li><strong>Local AI chat conversations:</strong> prompts, responses, and chat history are generated and stored entirely on your device. Inference runs locally using the downloaded model — your messages are never transmitted to any server, including ours.</li>
                 </ul>
                 <div class="highlight">
                     <strong>Important:</strong> None of this data is transmitted to our servers or any third-party services. All processing happens locally on your device.
                 </div>
 
-                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.2 User-Initiated Communications</h3>
+                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.2 On-Device AI Model Downloads</h3>
+                <p>The Local AI Chat feature uses open-source language models that must be downloaded to your device before use. When you explicitly tap "Download" on a model:</p>
+                <ul>
+                    <li>The app makes a standard HTTPS request to the Hugging Face Hub (<a href="https://huggingface.co" target="_blank">huggingface.co</a>) to fetch the model file.</li>
+                    <li>As with any HTTPS download, the remote server may log standard request metadata (such as your IP address and user agent) according to its own privacy policy.</li>
+                    <li>The app itself does not send any personal information, account data, or your chat content during these downloads — only the model file is requested.</li>
+                    <li>Once a model is downloaded, the Local AI Chat runs fully offline. No further network requests are made to use it.</li>
+                </ul>
+                <p>For details on how Hugging Face handles download requests, see <a href="https://huggingface.co/privacy" target="_blank">Hugging Face's Privacy Policy</a>.</p>
+
+                <!--
+                ============================================================
+                ADVERTISING SECTION — DISABLED
+                The first release of Private Toolbox does not contain any
+                advertising SDKs. This section is kept here, commented out,
+                so it can be re-enabled in a future version if ads are ever
+                introduced.
+                ============================================================
+                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.x Data Collected by Third Parties</h3>
+                <p><strong>Advertising Services:</strong> The app displays advertisements through Google AdMob. AdMob may collect:</p>
+                <ul>
+                    <li>Device information (model, operating system version)</li>
+                    <li>Advertising ID</li>
+                    <li>IP address</li>
+                    <li>Usage data related to ad interactions</li>
+                </ul>
+                <p>For more information about how Google handles this data, please review <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+                -->
+
+                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.3 User-Initiated Communications</h3>
                 <p>When you use the "Report Bug" feature, you voluntarily send an email to our support address. This email may contain:</p>
                 <ul>
                     <li>Your email address</li>
@@ -163,52 +193,64 @@
             <div class="section">
                 <h2>3. How We Use Information</h2>
                 <ul>
-                    <li><strong>Local Processing:</strong> All document, image, and text processing is performed locally to provide app functionality</li>
-                    <li><strong>Bug Reports:</strong> Email communications are used solely to address technical issues and improve the app</li>
+                    <li><strong>Local Processing:</strong> All document, image, text, and AI chat operations are performed locally to provide app functionality.</li>
+                    <li><strong>AI Model Downloads:</strong> Network requests are made only to retrieve the model files you explicitly choose to download from Hugging Face. No personal data is sent with these requests.</li>
+                    <li><strong>Bug Reports:</strong> Email communications are used solely to address technical issues and improve the app.</li>
+                    <!-- Advertising bullet removed — no ads in this release.
+                    <li><strong>Advertising:</strong> AdMob uses collected data to display personalized advertisements</li>
+                    -->
                 </ul>
             </div>
 
             <div class="section">
                 <h2>4. Data Storage and Security</h2>
                 <ul>
-                    <li>All files you process remain on your device and are controlled by you</li>
-                    <li>The app does not maintain any servers or databases to store your data</li>
-                    <li>We do not have access to the files you process unless you explicitly share them with us via email</li>
-                    <li>You can delete any files created by the app at any time through your device's file manager</li>
+                    <li>All files, notes, and AI chat histories you create remain on your device and are controlled by you.</li>
+                    <li>The app does not maintain any servers or databases to store your data.</li>
+                    <li>We do not have access to the files, messages, or conversations you process unless you explicitly share them with us via email.</li>
+                    <li>You can delete any files, notes, or chats created by the app at any time through the app itself or your device's file manager. Uninstalling the app removes all locally stored data, including any downloaded AI models.</li>
                 </ul>
             </div>
 
             <div class="section">
                 <h2>5. Third-Party Services</h2>
-                <p>The app integrates the following third-party service:</p>
+                <p>The app integrates the following third-party services:</p>
                 <ul>
-                    <li><strong>Google Play Services:</strong> For app ratings and reviews (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+                    <li><strong>Hugging Face Hub:</strong> Used only when you explicitly download an on-device AI model. See <a href="https://huggingface.co/privacy" target="_blank">Hugging Face Privacy Policy</a>.</li>
+                    <li><strong>Google Play Services:</strong> For app installation, updates, and in-app ratings/reviews (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>).</li>
+                    <!-- Google AdMob is not used in this release.
+                    <li><strong>Google AdMob:</strong> For displaying advertisements (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+                    -->
                 </ul>
-                <p>This service operates independently and is governed by its own privacy policy.</p>
+                <p>These services operate independently and are governed by their own privacy policies.</p>
             </div>
 
             <div class="section">
                 <h2>6. Permissions</h2>
                 <p>The app requests the following permissions:</p>
                 <ul>
-                    <li><strong>Camera:</strong> To scan QR codes, barcodes, and documents</li>
-                    <li><strong>Storage:</strong> To save and load files you create or modify</li>
+                    <li><strong>Camera:</strong> To scan QR codes, barcodes, and documents.</li>
+                    <li><strong>Storage:</strong> To save and load files, notes, chat histories, and downloaded AI models.</li>
+                    <li><strong>Internet:</strong> To download AI model files from Hugging Face when you explicitly request them, and to open external links (such as this privacy policy).<!-- Previously also: "to display advertisements" — removed in this release. --></li>
                 </ul>
-                <p>All permissions are used exclusively for their stated purposes and do not result in any data collection or transmission.</p>
+                <p>All permissions are used exclusively for their stated purposes and do not result in data collection beyond what is described in this policy.</p>
             </div>
 
             <div class="section">
                 <h2>7. Children's Privacy</h2>
-                <p>Private Toolbox does not collect personal information from anyone, including children. The app is designed to work entirely offline, and we do not actively collect data from users of any age.</p>
+                <p>Private Toolbox does not knowingly collect personal information from children. The app is designed to work entirely offline for core functionality, and we do not actively collect data from users of any age.</p>
             </div>
 
             <div class="section">
                 <h2>8. Your Rights</h2>
                 <p>You have the right to:</p>
                 <ul>
-                    <li>Control all files and data created by the app on your device</li>
-                    <li>Delete the app and all associated data at any time</li>
-                    <li>Contact us with questions about this privacy policy</li>
+                    <li>Control all files, notes, chat histories, and downloaded AI models created or stored by the app on your device.</li>
+                    <li>Delete the app and all associated data at any time.</li>
+                    <li>Contact us with questions about this privacy policy.</li>
+                    <!-- Advertising opt-out not applicable in this release (no ads).
+                    <li>Opt out of personalized advertising through your device settings</li>
+                    -->
                 </ul>
             </div>
 
@@ -226,7 +268,8 @@
 
         <div class="footer">
             <p>&copy; 2026 Private Toolbox. All rights reserved.</p>
-            <p>This app is completely offline and respects your privacy.</p>
+            <p>Private Toolbox is a 100% offline app. No ads, no trackers, no accounts.</p>
+            <p>This app processes your data locally and respects your privacy.</p>
         </div>
     </div>
 </body>
