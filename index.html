@@ -127,149 +127,111 @@
             <p class="date"><strong>Last Updated:</strong> April 11, 2026</p>
 
             <div class="section">
-                <h2>1. Introduction</h2>
-                <p>Private Toolbox ("we", "our", or "the app") is committed to protecting your privacy. This Privacy Policy explains how our application handles information when you use our services.</p>
-                <p><strong>Private Toolbox is an offline-first productivity application.</strong> Every tool in the app — including the on-device AI chat — processes your data entirely on your own device. The only time the app touches the network is when you explicitly choose to download an AI model file or when you tap an external link.</p>
+                <h2>1. Summary</h2>
+                <p>Private Toolbox is an offline-first productivity application. Every tool in the app — including the on-device AI chat — runs entirely on your own device. The app does not have user accounts, analytics, or trackers, and does not display advertisements. The only times the app uses the network at all are:</p>
+                <ul>
+                    <li>When you explicitly tap "Download" on an AI model, so the model file can be fetched.</li>
+                    <li>When you tap an external link (for example, opening this privacy policy).</li>
+                    <li>When you use "Report Bug", which launches your email app so you can send us a message.</li>
+                </ul>
+                <div class="highlight">
+                    <strong>In short:</strong> your files, notes, chats, and every other piece of data you create with the app stay on your device. We never receive them.
+                </div>
             </div>
 
             <div class="section">
-                <h2>2. Information We Collect</h2>
-
-                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.1 Data Processed Locally</h3>
-                <p>The app processes the following data <strong>entirely on your device</strong>. This data never leaves your device:</p>
+                <h2>2. What the app processes on your device</h2>
+                <p>The following is generated and stored locally. It is never sent to us or to any third party:</p>
                 <ul>
-                    <li>Documents (PDFs, images) you scan, convert, merge, or modify</li>
+                    <li>Documents you scan, convert, merge, or modify (PDFs, images)</li>
                     <li>QR codes and barcodes you scan or generate</li>
                     <li>Images you compress, resize, or convert between formats (PNG, JPG, WebP, etc.)</li>
                     <li>Text you count, transform, hash, or encode</li>
-                    <li>Notes you create in the notepad</li>
-                    <li>All calculator, graphing calculator, unit converter, and number base operations</li>
+                    <li>Notes from the notepad</li>
+                    <li>Calculator, graphing calculator, unit converter, and number base results</li>
                     <li>Timer and stopwatch data</li>
-                    <li><strong>Local AI chat conversations:</strong> prompts, responses, and chat history are generated and stored entirely on your device. Inference runs locally using the downloaded model — your messages are never transmitted to any server, including ours.</li>
-                </ul>
-                <div class="highlight">
-                    <strong>Important:</strong> None of this data is transmitted to our servers or any third-party services. All processing happens locally on your device.
-                </div>
-
-                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.2 On-Device AI Model Downloads</h3>
-                <p>The Local AI Chat feature uses open-source language models that must be downloaded to your device before use. When you explicitly tap "Download" on a model:</p>
-                <ul>
-                    <li>The app makes a standard HTTPS request to the Hugging Face Hub (<a href="https://huggingface.co" target="_blank">huggingface.co</a>) to fetch the model file.</li>
-                    <li>As with any HTTPS download, the remote server may log standard request metadata (such as your IP address and user agent) according to its own privacy policy.</li>
-                    <li>The app itself does not send any personal information, account data, or your chat content during these downloads — only the model file is requested.</li>
-                    <li>Once a model is downloaded, the Local AI Chat runs fully offline. No further network requests are made to use it.</li>
-                </ul>
-                <p>For details on how Hugging Face handles download requests, see <a href="https://huggingface.co/privacy" target="_blank">Hugging Face's Privacy Policy</a>.</p>
-
-                <!--
-                ============================================================
-                ADVERTISING SECTION — DISABLED
-                The first release of Private Toolbox does not contain any
-                advertising SDKs. This section is kept here, commented out,
-                so it can be re-enabled in a future version if ads are ever
-                introduced.
-                ============================================================
-                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.x Data Collected by Third Parties</h3>
-                <p><strong>Advertising Services:</strong> The app displays advertisements through Google AdMob. AdMob may collect:</p>
-                <ul>
-                    <li>Device information (model, operating system version)</li>
-                    <li>Advertising ID</li>
-                    <li>IP address</li>
-                    <li>Usage data related to ad interactions</li>
-                </ul>
-                <p>For more information about how Google handles this data, please review <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
-                -->
-
-                <h3 style="color: #333; font-size: 1.2em; margin: 20px 0 10px 0;">2.3 User-Initiated Communications</h3>
-                <p>When you use the "Report Bug" feature, you voluntarily send an email to our support address. This email may contain:</p>
-                <ul>
-                    <li>Your email address</li>
-                    <li>Device information you choose to include</li>
-                    <li>Description of the issue</li>
-                </ul>
-                <p>This information is only used to respond to your inquiry and improve the app.</p>
-            </div>
-
-            <div class="section">
-                <h2>3. How We Use Information</h2>
-                <ul>
-                    <li><strong>Local Processing:</strong> All document, image, text, and AI chat operations are performed locally to provide app functionality.</li>
-                    <li><strong>AI Model Downloads:</strong> Network requests are made only to retrieve the model files you explicitly choose to download from Hugging Face. No personal data is sent with these requests.</li>
-                    <li><strong>Bug Reports:</strong> Email communications are used solely to address technical issues and improve the app.</li>
-                    <!-- Advertising bullet removed — no ads in this release.
-                    <li><strong>Advertising:</strong> AdMob uses collected data to display personalized advertisements</li>
-                    -->
+                    <li>Local AI chat messages and history — the language model runs on your device and your prompts never leave it</li>
                 </ul>
             </div>
 
             <div class="section">
-                <h2>4. Data Storage and Security</h2>
+                <h2>3. AI model downloads</h2>
+                <p>The Local AI Chat needs a language model file to work. Before you can chat, you have to tap "Download" on one of the available models. When you do that, the app performs a plain HTTPS <code>GET</code> request to a public URL to fetch the model file — nothing more:</p>
                 <ul>
-                    <li>All files, notes, and AI chat histories you create remain on your device and are controlled by you.</li>
-                    <li>The app does not maintain any servers or databases to store your data.</li>
-                    <li>We do not have access to the files, messages, or conversations you process unless you explicitly share them with us via email.</li>
-                    <li>You can delete any files, notes, or chats created by the app at any time through the app itself or your device's file manager. Uninstalling the app removes all locally stored data, including any downloaded AI models.</li>
+                    <li>At the moment, the model files the app points at are hosted on the public servers of <a href="https://huggingface.co" target="_blank">huggingface.co</a>. The app is not integrated with any Hugging Face service, SDK, or account system — it just downloads a file, the same way a web browser would.</li>
+                    <li>No personal information, account data, or chat content is sent with the request. Only the model file is requested.</li>
+                    <li>As with any internet request, the remote server can see standard metadata such as your IP address and user agent. How that host handles this data is governed by its own privacy policy, which we have no control over.</li>
+                    <li>Once the download finishes, the Local AI Chat works fully offline. No further network requests are made to use it.</li>
                 </ul>
+                <p>We may change the host from which model files are downloaded in the future without changing this policy, as long as the nature of the request (an anonymous HTTPS download of a public file) stays the same.</p>
             </div>
 
             <div class="section">
-                <h2>5. Third-Party Services</h2>
-                <p>The app integrates the following third-party services:</p>
+                <h2>4. Bug reports</h2>
+                <p>When you use the "Report Bug" feature, the app opens your email client pre-filled with our support address. If you decide to send the message, you voluntarily share your email address, any device information you choose to include, and your description of the issue. We use this only to reply to you and to fix problems in the app.</p>
+            </div>
+
+            <!--
+            ============================================================
+            ADVERTISING SECTION — DISABLED
+            The first release of Private Toolbox does not ship with any
+            advertising SDK. This block is kept here, commented out, so it
+            can be re-enabled in a future version if ads are ever added.
+            ============================================================
+            <div class="section">
+                <h2>X. Advertising</h2>
+                <p>The app displays advertisements through Google AdMob. AdMob may collect device information (model, OS version), advertising ID, IP address, and usage data related to ad interactions. For details see <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+            </div>
+            -->
+
+            <div class="section">
+                <h2>5. Third-party services</h2>
                 <ul>
-                    <li><strong>Hugging Face Hub:</strong> Used only when you explicitly download an on-device AI model. See <a href="https://huggingface.co/privacy" target="_blank">Hugging Face Privacy Policy</a>.</li>
-                    <li><strong>Google Play Services:</strong> For app installation, updates, and in-app ratings/reviews (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>).</li>
+                    <li><strong>Google Play Services</strong> — for app installation, updates, and the in-app rating prompt. Governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
                     <!-- Google AdMob is not used in this release.
-                    <li><strong>Google AdMob:</strong> For displaying advertisements (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+                    <li><strong>Google AdMob</strong> — for displaying advertisements. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
                     -->
                 </ul>
-                <p>These services operate independently and are governed by their own privacy policies.</p>
+                <p>The servers that host the AI model files (currently huggingface.co) are <em>not</em> integrated services — the app just downloads a public file from them. They are treated the same way as any website you might open in a browser.</p>
             </div>
 
             <div class="section">
                 <h2>6. Permissions</h2>
-                <p>The app requests the following permissions:</p>
                 <ul>
-                    <li><strong>Camera:</strong> To scan QR codes, barcodes, and documents.</li>
-                    <li><strong>Storage:</strong> To save and load files, notes, chat histories, and downloaded AI models.</li>
-                    <li><strong>Internet:</strong> To download AI model files from Hugging Face when you explicitly request them, and to open external links (such as this privacy policy).<!-- Previously also: "to display advertisements" — removed in this release. --></li>
-                </ul>
-                <p>All permissions are used exclusively for their stated purposes and do not result in data collection beyond what is described in this policy.</p>
-            </div>
-
-            <div class="section">
-                <h2>7. Children's Privacy</h2>
-                <p>Private Toolbox does not knowingly collect personal information from children. The app is designed to work entirely offline for core functionality, and we do not actively collect data from users of any age.</p>
-            </div>
-
-            <div class="section">
-                <h2>8. Your Rights</h2>
-                <p>You have the right to:</p>
-                <ul>
-                    <li>Control all files, notes, chat histories, and downloaded AI models created or stored by the app on your device.</li>
-                    <li>Delete the app and all associated data at any time.</li>
-                    <li>Contact us with questions about this privacy policy.</li>
-                    <!-- Advertising opt-out not applicable in this release (no ads).
-                    <li>Opt out of personalized advertising through your device settings</li>
-                    -->
+                    <li><strong>Camera</strong> — to scan QR codes, barcodes, and documents.</li>
+                    <li><strong>Storage</strong> — to save and load files, notes, chat histories, and downloaded AI models.</li>
+                    <li><strong>Internet</strong> — to download AI model files when you explicitly request them, and to open external links (such as this privacy policy).<!-- Previously also used to display advertisements — removed in this release. --></li>
                 </ul>
             </div>
 
             <div class="section">
-                <h2>9. Changes to This Policy</h2>
-                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this policy. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+                <h2>7. Your data, your control</h2>
+                <ul>
+                    <li>You can delete any file, note, chat, or downloaded AI model at any time, from inside the app or via your device's file manager.</li>
+                    <li>Uninstalling the app removes all of its locally stored data, including any downloaded AI models.</li>
+                    <li>Because we don't have servers that store your data, there is nothing to request, export, or delete from our side.</li>
+                </ul>
             </div>
 
             <div class="section">
-                <h2>10. Contact Us</h2>
-                <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
-                <p><strong>Email:</strong> <a href="mailto:privatetoolboxapp@gmail.com">privatetoolboxapp@gmail.com</a></p>
+                <h2>8. Children's privacy</h2>
+                <p>Private Toolbox does not knowingly collect personal information from children. Since the app works entirely offline for its core functionality and does not collect data from users of any age, there is nothing to collect in the first place.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Changes to this policy</h2>
+                <p>We may update this Privacy Policy from time to time. Any change will be reflected by updating the "Last Updated" date at the top of the page.</p>
+            </div>
+
+            <div class="section">
+                <h2>10. Contact</h2>
+                <p>Questions or concerns? Email <a href="mailto:privatetoolboxapp@gmail.com">privatetoolboxapp@gmail.com</a>.</p>
             </div>
         </div>
 
         <div class="footer">
             <p>&copy; 2026 Private Toolbox. All rights reserved.</p>
-            <p>Private Toolbox is a 100% offline app. No ads, no trackers, no accounts.</p>
-            <p>This app processes your data locally and respects your privacy.</p>
+            <p>100% offline. No ads, no trackers, no accounts.</p>
         </div>
     </div>
 </body>
