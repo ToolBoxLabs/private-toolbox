@@ -124,13 +124,14 @@
         </div>
 
         <div class="content">
-            <p class="date"><strong>Last Updated:</strong> April 11, 2026</p>
+            <p class="date"><strong>Last Updated:</strong> April 18, 2026</p>
 
             <div class="section">
                 <h2>1. Summary</h2>
-                <p>Private Toolbox is an offline-first productivity application. Every tool in the app — including the on-device AI chat — runs entirely on your own device. The app does not include user accounts, advertising trackers, or analytics systems controlled by the developer. The only times the app uses the network at all are:</p>
+                <p>Private Toolbox is an offline-first productivity application. Every tool in the app — including the on-device AI chat, the AI translator, and the QR/barcode scanner — runs entirely on your own device. The app does not include user accounts, advertising trackers, or analytics systems controlled by the developer. The only times the app uses the network at all are:</p>
                 <ul>
-                    <li>When you explicitly tap "Download" on an AI model, so the model file can be fetched.</li>
+                    <li>When you explicitly tap "Download" on an AI chat model or a speech-to-text model, so the model file can be fetched.</li>
+                    <li>When the AI Translator needs a language pack (one-time download, ~30 MB per language) it fetches it via Google Play Services on demand. After that, translation runs fully on-device.</li>
                     <li>When you tap an external link (for example, opening this privacy policy).</li>
                     <li>When you use "Report Bug", which launches your email app so you can send us a message.</li>
                 </ul>
@@ -144,26 +145,38 @@
                 <p>The following is generated and stored locally. It is never sent to us or to any third party:</p>
                 <ul>
                     <li>Documents you scan, convert, merge, or modify (PDFs, images)</li>
-                    <li>QR codes and barcodes you scan or generate</li>
+                    <li>QR codes and barcodes you scan or generate — decoded on-device by the Google ML Kit Barcode Scanning model, which is bundled with the app</li>
                     <li>Images you compress, resize, or convert between formats (PNG, JPG, WebP, etc.)</li>
                     <li>Text you count, transform, hash, or encode</li>
                     <li>Notes from the notepad</li>
                     <li>Calculator, graphing calculator, unit converter, and number base results</li>
                     <li>Timer and stopwatch data</li>
                     <li>Local AI chat messages and history — the language model runs on your device and your prompts never leave it</li>
+                    <li>AI Translator input — language identification, speech-to-text (Whisper via ONNX Runtime), and translation all run locally on your device (see section 3.2 for the one-time language-pack downloads).</li>
                 </ul>
             </div>
 
             <div class="section">
                 <h2>3. AI model downloads</h2>
-                <p>The Local AI Chat needs a language model file to work. Before you can chat, you have to tap "Download" on one of the available models. When you do that, the app performs a plain HTTPS <code>GET</code> request to a public URL to fetch the model file — nothing more:</p>
+                <p>Some of the app's AI features need a model file to work. The app only fetches these files when you explicitly request them, and only the file itself is downloaded — no user content, no account data. There are two independent download paths:</p>
+
+                <p><strong>3.1. Chat LLMs and speech-to-text (Whisper) models.</strong> Before you can chat with the Local AI Chat or use voice input in the AI Translator, you have to tap "Download" on one of the available models. When you do, the app performs a plain HTTPS <code>GET</code> request to a public URL to fetch the model file — nothing more:</p>
                 <ul>
                     <li>At the moment, the model files the app points at are hosted on the public servers of <a href="https://huggingface.co" target="_blank">huggingface.co</a>. The app is not integrated with any Hugging Face service, SDK, or account system — it just downloads a file, the same way a web browser would.</li>
                     <li>No personal information, account data, or chat content is sent with the request. Only the model file is requested.</li>
                     <li>As with any internet request, the remote server can see standard metadata such as your IP address and user agent. How that host handles this data is governed by its own privacy policy, which we have no control over.</li>
-                    <li>Once the download finishes, the Local AI Chat works fully offline. No further network requests are made to use it.</li>
+                    <li>Once the download finishes, the feature works fully offline. No further network requests are made to use it.</li>
                 </ul>
-                <p>We may change the host from which model files are downloaded in the future without changing this policy, as long as the nature of the request (an anonymous HTTPS download of a public file) stays the same.</p>
+                <p>We may change the host from which these model files are downloaded in the future without changing this policy, as long as the nature of the request (an anonymous HTTPS download of a public file) stays the same.</p>
+
+                <p><strong>3.2. AI Translator language packs (Google ML Kit).</strong> The translation step of the AI Translator uses Google ML Kit's on-device translation, which requires per-language neural model packs (~30 MB each). The app manages these packs through the Google ML Kit SDK, which in turn downloads them via Google Play Services:</p>
+                <ul>
+                    <li>A language pack is downloaded automatically the first time you translate to/from that language, or manually when you tap "Download" for a language in the translation model manager.</li>
+                    <li>The request is handled by Google Play Services on your device. What the app sends to ML Kit is only the identifier of the language you asked for — never the text you are translating, never recorded audio, never chat history.</li>
+                    <li>Google's handling of Play Services downloads is governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+                    <li>Once a language pack is installed, all translation runs fully on your device. Text you translate, audio you record, and the produced translations are never sent to Google or to us.</li>
+                    <li>You can delete any language pack at any time from the translation model manager inside the app.</li>
+                </ul>
             </div>
 
             <div class="section">
@@ -187,12 +200,13 @@
             <div class="section">
                 <h2>5. Third-party services</h2>
                 <ul>
-                    <li><strong>Google Play Services</strong> — for app installation, updates, and the in-app rating prompt. Governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+                    <li><strong>Google Play Services</strong> — for app installation, updates, the in-app rating prompt, and on-demand delivery of Google ML Kit language packs used by the AI Translator. Governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+                    <li><strong>Google ML Kit (on-device)</strong> — used locally for (a) QR and barcode decoding in the scanner (model bundled with the app), (b) automatic language identification in the AI Translator, and (c) text translation in the AI Translator. All three run on your device; see section 3.2 for the one-time translation-pack downloads. Governed by <a href="https://developers.google.com/ml-kit/terms" target="_blank">ML Kit Terms of Service</a> and <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
                     <!-- Google AdMob is not used in this release.
                     <li><strong>Google AdMob</strong> — for displaying advertisements. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
                     -->
                 </ul>
-                <p>The servers that host the AI model files (currently huggingface.co) are <em>not</em> integrated services — the app just downloads a public file from them. They are treated the same way as any website you might open in a browser.</p>
+                <p>The servers that host the chat-LLM and Whisper model files (currently huggingface.co) are <em>not</em> integrated services — the app just downloads a public file from them. They are treated the same way as any website you might open in a browser.</p>
                 <p>
                 Some third-party libraries and platform components used by the app (for example, through the Android operating system or Google Play Services, including services provided by platform vendors such as Google) may automatically collect limited technical or diagnostic information, such as device characteristics or performance data.
 
@@ -204,16 +218,17 @@
                 <h2>6. Permissions</h2>
                 <ul>
                     <li><strong>Camera</strong> — to scan QR codes, barcodes, and documents.</li>
-                    <li><strong>Storage</strong> — to save and load files, notes, chat histories, and downloaded AI models.</li>
-                    <li><strong>Internet</strong> — to download AI model files when you explicitly request them, and to open external links (such as this privacy policy).<!-- Previously also used to display advertisements — removed in this release. --></li>
+                    <li><strong>Microphone</strong> — to record audio input for the AI Translator's voice modes (speech-to-text runs locally, see section 2).</li>
+                    <li><strong>Storage</strong> — to save and load files, notes, chat histories, downloaded AI chat/speech models, and downloaded ML Kit translation language packs.</li>
+                    <li><strong>Internet</strong> — to download AI chat/speech model files when you explicitly request them, to download ML Kit translation language packs via Google Play Services, and to open external links (such as this privacy policy).<!-- Previously also used to display advertisements — removed in this release. --></li>
                 </ul>
             </div>
 
             <div class="section">
                 <h2>7. Your data, your control</h2>
                 <ul>
-                    <li>You can delete any file, note, chat, or downloaded AI model at any time, from inside the app or via your device's file manager.</li>
-                    <li>Uninstalling the app removes all of its locally stored data, including any downloaded AI models.</li>
+                    <li>You can delete any file, note, chat, downloaded AI model, or installed ML Kit translation language pack at any time, from inside the app or via your device's file manager.</li>
+                    <li>Uninstalling the app removes all of its locally stored data, including any downloaded AI models and ML Kit translation language packs.</li>
                     <li>Because we don't have servers that store your data, there is nothing to request, export, or delete from our side.</li>
                 </ul>
                 <p>If you are located in the European Union, the General Data Protection Regulation (GDPR) grants you the rights of access, rectification, erasure, portability, objection, and restriction of processing, as well as the right to lodge a complaint with your local supervisory authority (for example, the AEPD in Spain). Since Private Toolbox does not collect, store, or process any personal data on remote servers, there is nothing on our side for you to access, correct, export, or delete — but these rights are formally acknowledged here.</p>
