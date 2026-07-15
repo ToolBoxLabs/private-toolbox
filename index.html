@@ -134,6 +134,7 @@
                     <li>When the AI Translator needs a language pack (one-time download, ~30 MB per language) it fetches it via Google Play Services on demand. After that, translation runs fully on-device.</li>
                     <li>When you tap an external link (for example, opening this privacy policy).</li>
                     <li>When you use "Report Bug", which launches your email app so you can send us a message.</li>
+                    <li>Right before one of the downloads above, the app performs a lightweight connectivity check (a DNS lookup of a well-known host, currently google.com) so it can show a clear "connect to the internet first" message instead of hanging. This lookup transmits no personal data and no app content — it only resolves a domain name.</li>
                 </ul>
                 <div class="highlight">
                     <strong>In short:</strong> your files, notes, chats, and every other piece of data you create with the app stay on your device. We do not collect, store, or have access to this data.
